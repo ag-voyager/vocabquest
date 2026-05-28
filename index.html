@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VocabQuest 🌟 – Word Adventure!</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Fredoka One (headings) + Nunito (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== FLOATING BACKGROUND DECORATIONS ===== -->
+  <div class="bg-decorations" aria-hidden="true">
+    <span class="deco deco-1">⭐</span>
+    <span class="deco deco-2">💎</span>
+    <span class="deco deco-3">🌈</span>
+    <span class="deco deco-4">✨</span>
+    <span class="deco deco-5">🎯</span>
+    <span class="deco deco-6">⭐</span>
+    <span class="deco deco-7">🔥</span>
+    <span class="deco deco-8">💡</span>
+  </div>
+
+  <!-- ===== APP WRAPPER ===== -->
+  <div class="app-wrapper">
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+      <div class="logo-area">
+        <span class="logo-icon">🧠</span>
+        <h1 class="logo-text">VocabQuest</h1>
+      </div>
+      <p class="logo-tagline">Become a Word Wizard! 🪄</p>
+
+      <!-- Streak / stats bar -->
+      <div class="stats-bar">
+        <div class="stat-chip" id="streak-chip">
+          <span class="stat-icon">🔥</span>
+          <span class="stat-label">Streak</span>
+          <span class="stat-value" id="streak-value">0</span>
+        </div>
+        <div class="stat-chip" id="total-chip">
+          <span class="stat-icon">🏆</span>
+          <span class="stat-label">Total Correct</span>
+          <span class="stat-value" id="total-correct-value">0</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-icon">📖</span>
+          <span class="stat-label">Words Seen</span>
+          <span class="stat-value" id="words-seen-value">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+
+      <!-- === LOADING STATE === -->
+      <section class="view" id="loading-view">
+        <div class="loading-box">
+          <div class="loader-spinner"></div>
+          <p class="loading-text">Picking your words… <span class="loading-emoji">🔮</span></p>
+        </div>
+      </section>
+
+      <!-- === LEARN VIEW === -->
+      <section class="view hidden" id="learn-view">
+        <div class="view-header">
+          <h2 class="view-title">Today's Magic Words <span>📚</span></h2>
+          <p class="view-subtitle">Study these 5 words carefully, then take the test!</p>
+        </div>
+
+        <!-- Word cards grid -->
+        <div class="cards-grid" id="cards-grid">
+          <!-- Cards inserted by JS -->
+        </div>
+
+        <!-- Action buttons -->
+        <div class="action-bar">
+          <button class="btn btn-primary" id="take-test-btn">
+            <span class="btn-icon">🎯</span> Take the Test!
+          </button>
+          <button class="btn btn-secondary" id="refresh-btn">
+            <span class="btn-icon">🔄</span> New Words
+          </button>
+        </div>
+      </section>
+
+      <!-- === TEST VIEW === -->
+      <section class="view hidden" id="test-view">
+        <div class="view-header">
+          <h2 class="view-title">Time to Test! <span>✏️</span></h2>
+          <p class="view-subtitle">Unscramble the word that matches each meaning.</p>
+        </div>
+
+        <!-- Test progress bar -->
+        <div class="progress-wrap">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <!-- Test table (responsive card layout on mobile) -->
+        <div class="test-container">
+          <div class="test-table-header">
+            <span>Scrambled</span>
+            <span>Meaning</span>
+            <span>Your Answer</span>
+            <span>Result</span>
+          </div>
+          <div class="test-rows" id="test-rows">
+            <!-- Rows inserted by JS -->
+          </div>
+        </div>
+
+        <!-- Score summary (hidden until submitted) -->
+        <div class="score-summary hidden" id="score-summary">
+          <div class="score-badge" id="score-badge">
+            <span class="score-emoji" id="score-emoji">🎉</span>
+            <span class="score-number" id="score-number">0/5</span>
+            <span class="score-label" id="score-label">Correct!</span>
+          </div>
+          <p class="score-message" id="score-message"></p>
+        </div>
+
+        <!-- Test action buttons -->
+        <div class="action-bar">
+          <button class="btn btn-success" id="submit-btn">
+            <span class="btn-icon">✅</span> Submit Answers
+          </button>
+          <button class="btn btn-warning hidden" id="retry-btn">
+            <span class="btn-icon">🔁</span> Retry This Test
+          </button>
+          <button class="btn btn-secondary hidden" id="back-to-learn-btn">
+            <span class="btn-icon">📚</span> Study Again
+          </button>
+          <button class="btn btn-primary hidden" id="new-words-btn">
+            <span class="btn-icon">🌟</span> New Adventure!
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <p>Keep learning — every word makes you smarter! 🌟</p>
+    </footer>
+
+  </div><!-- /.app-wrapper -->
+
+  <!-- Confetti canvas (for correct answers celebration) -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <script src="words.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
